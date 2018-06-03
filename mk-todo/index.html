@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>慕课网教程实现ToDoList</title>
+    <script src="https://unpkg.com/vue@2.5.16/dist/vue.js"></script>
+</head>
+
+<body>
+    <!-- MVVM 设计模式  Model ViewModel(Vue 提供) View-->
+
+    <!-- View -->
+    <div id="app">
+        <input type="text" v-model="inputValue">
+        <button @click="handleBtnClick">提交</button>
+        <!-- <ul>
+            <li v-for="item in list">{{item}}</li>
+        </ul> -->
+        <ul>
+            <Todo-Item :content="item" :index="index" @delete="handelItemDelete" v-for="(item,index) in list"></Todo-Item>
+        </ul>
+
+    </div>
+    <script>
+        // 全局组件
+        Vue.component("TodoItem", {
+            props: ["content","index"],
+            template: `<li @click="handleItemClick">{{content}}</li>`,
+            methods:{
+                handleItemClick:function(){
+                    // alert("click");
+                    this.$emit("delete",this.index);
+                }
+            }
+        });
+        // Model
+        var app = new Vue({
+            el: "#app",
+            data: {
+                list: [],
+                inputValue: ""
+            },
+            methods: {
+                handleBtnClick: function () {
+                    //alert("click");
+                    this.list.push(this.inputValue);
+                    this.inputValue = "";
+                },
+                handelItemDelete:function(index){
+                    // alert(index);
+                    this.list.splice(index,1);
+                }
+            }
+        })
+    </script>
+</body>
+
+</html>
