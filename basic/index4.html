@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <script src="https://unpkg.com/vue@2.5.16/dist/vue.js"></script>
+</head>
+
+<body>
+    <div id="app">
+        <!-- 事件修饰符 .enter  .space .esc .13(按键号码) 可同时使用 -->
+        <!-- 系统修饰符：.shift -->
+        <input type="text" v-on:keyup.enter="keyup">
+        <input type="text" v-on:keyup.shift="shift">  
+    </div>
+    <script>
+        new Vue({
+            el: "#app",
+            data: {
+
+            },
+            methods: {
+                keyup: function (event) {
+                    // if (event.which == 13) {
+                    //     alert("you pressed Enter");
+                    // }
+                    alert("you pressed Enter");
+                },
+                shift:function(){
+                    alert("you pressed Shift");
+                }
+            }
+        })
+    </script>
+</body>
+
+</html>

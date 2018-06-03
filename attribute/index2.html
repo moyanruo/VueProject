@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>vue watch 属性</title>
+    <script src="https://unpkg.com/vue@2.5.16/dist/vue.js"></script>
+
+</head>
+
+<body>
+    <div id="app">
+        <!--watch 和 computed 属性的区别，computed 必须有return返回值  -->
+        <input type="text" v-model="searchInfo">
+        <div v-if="showSearch"> 正在搜索</div>
+        <ul>
+            <li v-for=" item in result">{{item}}</li>
+        </ul>
+    </div>
+
+    <script>
+        new Vue({
+            el: "#app",
+            data: {
+                searchInfo:"",
+                showSearch:false,
+                result:[]
+            },
+            methods: {
+
+            },
+            watch: {
+                searchInfo:function(query){
+                    // console.log(query);
+                    this.showSearch=true;
+                    setTimeout(() => {
+                        this.result=["js","css","vue"];
+                        this.showSearch=false;
+                    }, 500);
+                }
+            }
+        })
+    </script>
+</body>
+
+</html>

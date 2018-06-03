@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <script src="https://unpkg.com/vue@2.5.16/dist/vue.js"></script>
+</head>
+
+<body>
+    <!-- 条件渲染 
+        不渲染dom节点
+        v-if   v-else-if   v-else 
+        必须是兄弟节点，父子节点不起作用
+        
+        v-show：隐藏dom节点
+    -->
+    <div id="app">
+        <p v-if="items >= 20">
+            {{items}} 个有现货
+        </p>
+        <p v-else-if="items >1">
+            所剩不多了，快点买吧
+        </p>
+        <p v-else>
+            没有库存了，请耐心等待
+        </p>
+        <template v-if="items >50">
+            <p>
+                注意事项：
+            </p>
+            <p>
+                因为剩余很多，打8折
+            </p>
+        </template>
+
+        <p v-show="NinJa">
+            I am hide
+        </p>
+        <p v-show="!NinJa">
+            I am here
+        </p>
+        <button v-on:click="NinJa =!NinJa">v-SHow</button>
+    </div>
+    <script>
+        new Vue({
+            el: "#app",
+            data: {
+                items: 52,
+                NinJa:true
+            },
+            methods: {
+
+            }
+        })
+    </script>
+</body>
+
+</html>

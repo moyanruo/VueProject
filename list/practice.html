@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>练习</title>
+    <script src="https://unpkg.com/vue@2.5.16/dist/vue.js"></script>
+
+</head>
+
+<body>
+    <div id="app">
+        <input type="password" name="" id="" v-model="password">
+        <p v-if="password.length>8">你的 字符大于8个</p>
+        <p v-else-if="password.length"> 你有{{password.length}}个字符</p>
+        <p v-else> 你没有字符</p>
+
+        <ol>
+            <li v-for="item in subs">
+                {{item.name}}
+                <ul>
+                    <li v-for=" sitem in item.sub">{{sitem}}</li>
+                </ul>
+            </li>
+        </ol>
+    </div>
+    <script>
+        new Vue({
+            el: "#app",
+            data: {
+                password: "abc123",
+                subs: [{
+                        name: "javascript",
+                        sub: ["vue", "angular", "react"]
+                    },
+                    {
+                        name: "database",
+                        sub: ["sql", "mysql", "mongodb"]
+                    },
+                    {
+                        name: "system",
+                        sub: ["mac", "windows", "liux"]
+                    }
+                ]
+            },
+            methods: {
+
+            }
+        })
+    </script>
+</body>
+
+</html>

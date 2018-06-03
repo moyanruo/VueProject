@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <script src="https://unpkg.com/vue@2.5.16/dist/vue.js"></script>
+</head>
+
+<body>
+    <div id="app">
+        <div v-on:click="showSome('hi world',$event)">
+            <!-- v-on:click.stop 用来阻止事件的发生 
+            事件修饰符： stop，prevent
+            -->
+            <button v-on:click.stop="showSome('hello world',$event)">click</button>
+            <a href="https://www.baidu.com" v-on:click.prevent="showSome('a 标签',$event)">link me </a>
+            <a href="https://www.baidu.com" v-on:click.prevent>link me </a>
+        </div>
+
+    </div>
+    <script>
+        new Vue({
+            el: "#app",
+            data: {
+
+            },
+            methods: {
+                showSome: function (msg, event) {
+                    console.log(msg);
+                    alert(msg);
+                }
+            }
+        })
+    </script>
+</body>
+
+</html>

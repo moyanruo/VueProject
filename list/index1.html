@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <script src="https://unpkg.com/vue@2.5.16/dist/vue.js"></script>
+
+</head>
+
+<body>
+    <div id="app">
+        <!-- 模板复用 -->
+        <!-- v-bind:key="item.id" 重新渲染 Dom 节点 -->
+        <div v-for=" item in persons" v-bind:key="item.id">
+            {{item.id}}----{{item.name}}
+            <input type="text">
+        </div>
+        <button v-on:click="add">添加</button>
+        <button v-on:click="reverse">Reverse</button>
+    </div>
+    <script>
+        new Vue({
+            el: "#app",
+            data: {
+                persons: [{
+                    id:1,
+                    name:"li"
+                }, {
+                    id:2,
+                    name:"liu"
+                }, {
+                    id:3,
+                    name:"zhao"
+                }]
+            },
+            methods: {
+                add:function(){
+                    // 添加
+                    this.persons.push({
+                        id:4,
+                        name:"zhang"
+                    })
+                },
+                reverse:function(){
+                    // 倒序
+                    this.persons.reverse();
+                }
+            }
+        })
+    </script>
+</body>
+
+</html>

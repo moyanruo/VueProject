@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <script src="https://unpkg.com/vue@2.5.16/dist/vue.js"></script>
+    
+</head>
+<body>
+    <div id="app">
+        <div style="height: 200px;width: 200px;" v-bind:style="[styles,styles2]"></div>
+        <button v-on:click="change"> change</button>
+    </div>
+
+    <script>
+        new Vue({
+            el:"#app",
+            data:{
+                color:"yellow"               
+            },
+            computed: {
+                styles:function(){
+                    return{
+                        backgroundColor:this.color
+                    }
+                },
+                styles2:function(){
+                    return{
+                        "border-radius":"100px"
+                    }
+                    
+                }
+            },
+            methods: {
+                change:function(){
+                    if(this.color=='yellow')
+                        this.color='blue';
+                    else
+                        this.color="yellow";
+                }
+            },
+            filters: {
+                
+            }
+
+        })
+    </script>
+</body>
+</html>

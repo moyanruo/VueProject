@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>filters 过滤条件 学习 二</title>
+    <script src="https://unpkg.com/vue@2.5.16/dist/vue.js"></script>
+
+</head>
+
+<body>
+    <div id="app">
+        <div v-bind:title="msg | firstWordUp">
+            {{msg | firstWordUp}}
+        </div>
+
+        <div>
+            {{msg |firstWordUp | removeSpace}}
+        </div>
+    </div>
+
+    <script>
+        new Vue({
+            el: "#app",
+            data: {
+                msg: "hello world"
+            },
+            methods: {
+
+            },
+            filters: {
+                firstWordUp: function (val) {
+                    val = val.toString();
+                    var arr = val.split(" ");
+                    var newarr = arr.map(function (item) {
+                        return item.charAt(0).toUpperCase() + item.slice(1);
+                    })
+                    return newarr.join(" ");
+                },
+                removeSpace: function (val) {
+                    return val.toString().replace(/ /g, "");
+                }
+            }
+        })
+    </script>
+</body>
+
+</html>

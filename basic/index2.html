@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Vue 指令学习</title>
+    <script src="https://unpkg.com/vue@2.5.16/dist/vue.js"></script>
+</head>
+
+<body>
+    <div id="app">
+        <a v-bind:href="url">百度</a>
+    </div>
+    <script>
+        // vue 指令语法 v-指令名字 +：+指令参数=指令的表达式
+        new Vue({
+            el: "#app",
+            data: {
+                url: "https://www.baidu.com"
+            }
+        })
+    </script>
+</body>
+
+</html>

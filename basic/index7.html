@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <script src="https://unpkg.com/vue@2.5.16/dist/vue.js"></script>
+</head>
+<body>
+    <div id="app">
+        {{html}}
+        <!-- v-html 有安全问题 -->
+        <div v-html="html"></div>
+        <div v-onece>
+            {{message}}
+        </div>
+        <button v-on:click="message ='123'">click</button>
+    </div>
+    <script>
+        new Vue({
+            el:"#app",
+            data:{
+                html:"<h1>hello world</h1>",
+                message:"lizimu"
+            },
+            methods:{
+
+            }
+        })
+    </script>
+</body>
+</html>

@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Vue 组件开发 学习</title>
+    <script src="https://unpkg.com/vue@2.5.16/dist/vue.js"></script>
+
+</head>
+
+<body>
+    <div id="app">
+        <!-- 组件：自定义标签 
+        template 缺点：使用html标签，格式化成字符串，没有高亮显示，不能自动生成
+        只能渲染第一个dom节点
+        -->
+
+    <my-component></my-component>
+    </div>
+
+    <script>
+        // new Vue({
+        //     el: "#app",
+        //     template:'<div>Vue 组件学习</div>',
+        //     data: {
+        //         msg:"Vue 组件学习"
+        //     },
+        //     methods: {
+
+        //     }
+        // })
+
+
+        Vue.component("my-component", {
+            template: `
+            <div>
+            <h1>联系方式</h1>
+            <p>联系我：1234237492</p>
+            </div>`
+        })
+        new Vue({
+            el: "#app",
+
+        })
+    </script>
+</body>
+
+</html>

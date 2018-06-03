@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <script src="https://unpkg.com/vue@2.5.16/dist/vue.js"></script>
+    <style>
+        .shape {
+            height: 150px;
+            width: 150px;
+            margin: 10px;
+            float: left;
+        }
+
+        .circle {
+            background: red;
+            border-radius: 50%;
+        }
+
+        .square {
+            background-color: blue;
+        }
+
+        .triangle {
+            width: 0px;
+            height: 0px;
+        }
+
+        .up {
+            border-left: 100px solid transparent;
+            border-right: 100px solid transparent;
+            border-bottom: 150px solid orange;
+        }
+
+        .down {
+            border-left: 100px solid transparent;
+            border-right: 100px solid transparent;
+            border-top: 150px solid green;
+        }
+
+        .animation {
+            animation: strentch 1.0s ease-out;
+        }
+
+        @keyframes strentch {
+            0% {
+                transform: scale(0.3);
+            }
+            100% {
+                transform: scale(1);
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <div id="app">
+        <!-- <div class="shape square">
+
+        </div> -->
+
+        <div v-for="shape in shapes" class="shape" :class="[shape.shape,shape.direction?shape.direction:'',{animation:shape.animation}]"></div>
+    </div>
+
+    <script>
+        new Vue({
+            el: "#app",
+            data: {
+                shapes: [{
+                        shape: 'circle',
+                        animation: true
+                    }, {
+                        shape: 'square',
+                        animation: true
+                    },
+                    {
+                        shape: 'triangle',
+                        direction: "up"
+                    },
+                    {
+                        shape: 'triangle',
+                        direction: "down"
+                    }
+                ]
+            },
+            methods: {
+
+            },
+            filters: {
+
+            },
+            computed: {
+
+            }
+        })
+    </script>
+</body>
+
+</html>

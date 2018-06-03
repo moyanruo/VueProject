@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Vue computed 属性</title>
+    <script src="https://unpkg.com/vue@2.5.16/dist/vue.js"></script>
+
+</head>
+
+<body>
+    <div id="app">
+        <div>{{num}}</div>
+        <div>{{fullName}}</div>
+        <button v-on:click="num++">add</button>
+        <button v-on:click="changeName">changeName</button>
+        <button v-on:click="changeFullName">changeFull</button>
+    </div>
+    <script>
+        new Vue({
+            el: "#app",
+            data: {
+                num: 0,
+                firstNmae: "zimu",
+                lastName: "li"
+            },
+            methods: {
+                changeName: function () {
+                    this.firstNmae = "zhao",
+                        this.lastName = "zongheng"
+                },
+                changeFullName: function () {
+                    this.fullName = "xiao zhao"
+                }
+            },
+            computed: {
+                fullName: {
+                    get: function () {
+                        alert("我执行了GET");
+                        return this.lastName + " " + this.firstNmae;
+                    },
+                    set: function (newValue) {
+                        alert(" 我执行了set,fullName=" + newValue);
+                        var arr = newValue.split(" ");
+                        this.lastName = arr[0];
+                        this.firstNmae = arr[1];
+                    }
+                }
+                // 计算属性：1、只有依赖的dom属性改变才会重新渲染dom节点
+                // fullName: function () {
+                //     alert("我执行了");
+                //     return this.lastName + " " + this.firstNmae;
+                // }
+            }
+        })
+    </script>
+</body>
+
+</html>

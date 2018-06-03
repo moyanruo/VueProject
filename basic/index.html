@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Vue学习</title>
+    <script src="https://unpkg.com/vue@2.5.16/dist/vue.js"></script>
+</head>
+
+<body>
+    <div id="app">
+        <!-- {{}} 中填写简单表达式 -->
+        <p>{{msg}} {{age*2}}</p> 
+        <p>{{age >60 ? "老人" :"青年"}}</p>
+        <p>{{firstName+ " " +lastName}}</p>
+        <p>{{fullName.split(" ")[1] }}</p>
+        <p>{{getFullName()}}</p>
+    </div>
+    <script>
+        //构造一个Vue实例对象
+        new Vue({
+            el: "#app",
+            data: {
+                msg: "Hello world ！！！",
+                age: 30,
+                lastName: "Li",
+                firstName: "zimu",
+                fullName:"zimu Li"
+            },
+            // methods 中定义函数不能用 => 这种方式，获取不到this，只能用传统function方式定义函数
+            methods:{
+                getFullName:function(){
+                    return this.firstName + " " + this.lastName;
+                }
+            }
+        });
+    </script>
+
+</body>
+
+</html>
